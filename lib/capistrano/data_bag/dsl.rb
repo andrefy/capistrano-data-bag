@@ -3,7 +3,7 @@ require "json"
 module Capistrano
   module DataBag
     module DSL
-      def self.load_into(capistrano_configuration)        
+      def self.load_into(capistrano_configuration)
         capistrano_configuration.load do
           def create_data_bag_item(bag, item, data = {})
             FileUtils.makedirs "#{data_bags_path}/#{bag}" unless Dir.exist? "#{data_bags_path}/#{bag}"

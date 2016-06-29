@@ -1,5 +1,4 @@
 require 'capistrano'
-require 'capistrano/cli'
 require 'capistrano/version'
 
 module Capistrano
@@ -39,17 +38,17 @@ module Capistrano
           end
 
           def self.read_create_data_bag_information
-            set(:data_bag_name, Capistrano::CLI.ui.ask("Enter data bag name: ")) unless exists?(:data_bag_name)
-            set(:data_bag_item, Capistrano::CLI.ui.ask("Enter item name: ")) unless exists?(:data_bag_item)
+            # set(:data_bag_name, Capistrano::CLI.ui.ask("Enter data bag name: ")) unless exists?(:data_bag_name)
+            # set(:data_bag_item, Capistrano::CLI.ui.ask("Enter item name: ")) unless exists?(:data_bag_item)
 
             if exists?(:data_file)
-              data = Capistrano::DataBag::Support.load_json(data_file) || {}
+              # data = Capistrano::DataBag::Support.load_json(data_file) || {}
             else
               data = {}
               begin
-                key = Capistrano::CLI.ui.ask "Enter key: "
-                value = Capistrano::CLI.ui.ask "Enter value for #{key}: " unless key.empty?
-                data.merge! key => value unless key.empty?
+                # key = Capistrano::CLI.ui.ask "Enter key: "
+                # value = Capistrano::CLI.ui.ask "Enter value for #{key}: " unless key.empty?
+                # data.merge! key => value unless key.empty?
               end until key.empty?
               data
             end

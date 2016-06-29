@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/capistrano/data_bag/version', __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'capistrano/data_bag/version'
 
 Gem::Specification.new do |gem|
   gem.name        = 'capistrano-data-bag'
@@ -15,8 +17,6 @@ Gem::Specification.new do |gem|
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'capistrano-spec'
-  gem.add_development_dependency 'coveralls'
+  gem.add_dependency "capistrano", ">= 3.1"
+  gem.add_development_dependency "rake"
 end
